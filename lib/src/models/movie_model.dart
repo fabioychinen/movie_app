@@ -27,7 +27,7 @@ class MovieModel {
           : null,
       overview: map['overview'] != null
           ? map['overview'] as String
-          : null, // Novo campo para a sinopse
+          : null, 
     );
   }
 
