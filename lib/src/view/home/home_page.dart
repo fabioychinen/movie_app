@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/src/data/movie_data_source.dart';
 import 'package:movie_app/src/models/movie_model.dart';
+import 'package:movie_app/src/view/details/movie_detail_page.dart';
 import 'package:movie_app/src/widgets/card_movie_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,6 +39,15 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void _showMovieDescription(MovieModel movie) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MovieDetailPage(movie: movie),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,9 +62,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: const EdgeInsets.only(
-                    left: 10,
-                  ),
+                  padding: const EdgeInsets.only(left: 10),
                   child: const Text(
                     'Os Mais Populares',
                     textAlign: TextAlign.left,
@@ -81,7 +89,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildMovieList(List<MovieModel> movies) {
     if (_isLoading) {
-      return const CircularProgressIndicator();
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
     } else {
       return SizedBox(
         height: 280,
@@ -91,7 +101,13 @@ class _HomePageState extends State<HomePage> {
           itemCount: movies.length,
           itemBuilder: (BuildContext context, int index) {
             final movie = movies[index];
-            return CardMovieWidget(movie: movie);
+            return GestureDetector(
+              onTap: () {
+                _showMovieDescription(movie);
+              },
+              child:
+                  CardMovieWidget(movie: movie, onTap: _showMovieDescription),
+            );
           },
         ),
       );

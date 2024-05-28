@@ -8,6 +8,17 @@ class MovieDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double voteAverage = movie.voteAverage ?? 0;
+    Color getVoteColor(double vote) {
+      if (vote >= 7.0) {
+        return Colors.green;
+      } else if (vote >= 4.0) {
+        return Colors.yellow;
+      } else {
+        return Colors.red;
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(movie.title ?? ''),
@@ -18,7 +29,7 @@ class MovieDetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
-              movie.posterPath ?? '',
+              'https://image.tmdb.org/t/p/w500${movie.posterPath}' ?? '',
               fit: BoxFit.cover,
               height: 300,
             ),
@@ -33,9 +44,30 @@ class MovieDetailPage extends StatelessWidget {
               style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 10),
-            Text(
-              'Avaliação: ${movie.voteAverage ?? ''}',
-              style: const TextStyle(fontSize: 16),
+            Row(
+              children: [
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    CircularProgressIndicator(
+                      value: voteAverage / 10,
+                      backgroundColor: Colors.grey.shade300,
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        getVoteColor(voteAverage),
+                      ),
+                    ),
+                    Text(
+                      '${(voteAverage * 10).toStringAsFixed(0)}%',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  'Avaliação: ${voteAverage.toString()}',
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ],
             ),
           ],
         ),
