@@ -3,9 +3,9 @@ import 'package:http/http.dart' as http;
 import 'package:movie_app/src/models/movie_model.dart';
 
 class MovieDataSource {
-  final String apiKey = '88efd5107320ab503dcd9aae2c475996';
+  final String apiKey = '';
   final String _baseUrl = "https://api.themoviedb.org/3";
-  final String _key = "?api_key=88efd5107320ab503dcd9aae2c475996";
+  final String _key = "";
 
   String get fetchPopular => "$_baseUrl/movie/popular$_key";
   String get fetchFreeToWatch => "$_baseUrl/movie/now_playing$_key";
