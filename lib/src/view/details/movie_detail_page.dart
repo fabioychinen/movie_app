@@ -17,10 +17,10 @@ class MovieDetailPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.network(
-              'https://image.tmdb.org/t/p/w500${movie.posterPath}' ?? '',
+              'https://image.tmdb.org/t/p/w500${movie.posterPath}',
               fit: BoxFit.cover,
               height: 300,
             ),
