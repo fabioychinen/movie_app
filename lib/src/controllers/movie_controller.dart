@@ -18,7 +18,6 @@ class MovieController extends ChangeNotifier {
 
       isLoading = false;
       notifyListeners();
-    } catch (e) {
-    }
+    } catch (e) {}
   }
 }

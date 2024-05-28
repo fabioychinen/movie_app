@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/src/models/movie_model.dart';
 
 class MovieDetailPage extends StatelessWidget {
@@ -9,16 +10,6 @@ class MovieDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double voteAverage = movie.voteAverage ?? 0;
-    Color getVoteColor(double vote) {
-      if (vote >= 7.0) {
-        return Colors.green;
-      } else if (vote >= 4.0) {
-        return Colors.yellow;
-      } else {
-        return Colors.red;
-      }
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(movie.title ?? ''),
@@ -69,9 +60,37 @@ class MovieDetailPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 10),
+            Text(
+              Intl.message(
+                'Sinopse:',
+                name: 'movieDetailSynopsis',
+                locale: 'pt_BR',
+                desc: 'Label for movie synopsis',
+                meaning: 'Sinopse do filme',
+                args: [],
+              ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              movie.overview ??
+                  Intl.message('Sinopse não disponível', locale: 'pt_BR'),
+              style: const TextStyle(fontSize: 14),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Color getVoteColor(double vote) {
+    if (vote >= 7.0) {
+      return Colors.green;
+    } else if (vote >= 4.0) {
+      return Colors.yellow;
+    } else {
+      return Colors.red;
+    }
   }
 }

@@ -13,9 +13,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final MovieDataSource _movieDataSource = MovieDataSource();
-  late List<MovieModel> _popularMovies;
-  late List<MovieModel> _freeToWatchMovies;
-  bool _isLoading = false;
+  List<MovieModel> _popularMovies = [];
+  List<MovieModel> _freeToWatchMovies = [];
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -24,15 +24,15 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _fetchMovies() async {
-    setState(() {
-      _isLoading = true;
-    });
     try {
-      _popularMovies = await _movieDataSource.getMoviesPopular();
-      _freeToWatchMovies = await _movieDataSource.getMoviesFreeToWatch();
+      final popularMovies = await _movieDataSource.getMoviesPopular();
+      final freeToWatchMovies = await _movieDataSource.getMoviesFreeToWatch();
+      setState(() {
+        _popularMovies = popularMovies;
+        _freeToWatchMovies = freeToWatchMovies;
+        _isLoading = false;
+      });
     } catch (e) {
-      // Handle error
-    } finally {
       setState(() {
         _isLoading = false;
       });
@@ -92,6 +92,10 @@ class _HomePageState extends State<HomePage> {
       return const Center(
         child: CircularProgressIndicator(),
       );
+    } else if (movies.isEmpty) {
+      return const Center(
+        child: Text('Nenhum filme encontrado'),
+      );
     } else {
       return SizedBox(
         height: 280,
@@ -105,8 +109,10 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 _showMovieDescription(movie);
               },
-              child:
-                  CardMovieWidget(movie: movie, onTap: _showMovieDescription),
+              child: CardMovieWidget(
+                movie: movie,
+                onTap: _showMovieDescription,
+              ),
             );
           },
         ),

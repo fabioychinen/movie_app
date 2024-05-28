@@ -5,12 +5,14 @@ class MovieModel {
   String? releaseDate;
   String? title;
   double? voteAverage;
+  String? overview;
 
   MovieModel({
     this.posterPath,
     this.releaseDate,
     this.title,
     this.voteAverage,
+    this.overview,
   });
 
   factory MovieModel.fromMap(Map<String, dynamic> map) {
@@ -23,6 +25,9 @@ class MovieModel {
       voteAverage: map['vote_average'] != null
           ? double.parse(map['vote_average'].toString())
           : null,
+      overview: map['overview'] != null
+          ? map['overview'] as String
+          : null, // Novo campo para a sinopse
     );
   }
 
@@ -35,6 +40,7 @@ class MovieModel {
       'release_date': releaseDate,
       'title': title,
       'vote_average': voteAverage,
+      'overview': overview,
     };
   }
 
@@ -42,6 +48,6 @@ class MovieModel {
 
   @override
   String toString() {
-    return 'MovieModel(posterPath: $posterPath, releaseDate: $releaseDate, title: $title, voteAverage: $voteAverage)';
+    return 'MovieModel(posterPath: $posterPath, releaseDate: $releaseDate, title: $title, voteAverage: $voteAverage, overview: $overview)';
   }
 }

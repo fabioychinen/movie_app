@@ -18,9 +18,12 @@ class MovieApp extends StatelessWidget {
       child: MaterialApp(
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate
+          GlobalWidgetsLocalizations.delegate,
         ],
-        supportedLocales: const [Locale('pt', 'BR')],
+        supportedLocales: const [
+          Locale('pt', 'BR'),
+          Locale('en', 'US'),
+        ],
         debugShowCheckedModeBanner: false,
         title: 'Filmes e Séries',
         theme: ThemeData(

@@ -87,12 +87,16 @@ class CardMovieWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               Text(
-                movie.title ?? 'Carregando',
+                movie.title != null
+                    ? _truncateString(movie.title!, 20)
+                    : 'Loading...',
                 style: const TextStyle(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
               ),
+              const SizedBox(height: 5),
               Text(
                 DateFormat("dd MMM y", "pt_BR")
                     .format(DateTime.parse(movie.releaseDate!)),
@@ -107,5 +111,11 @@ class CardMovieWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _truncateString(String string, int maxLength) {
+    return string.length <= maxLength
+        ? string
+        : '${string.substring(0, maxLength)}...';
   }
 }
