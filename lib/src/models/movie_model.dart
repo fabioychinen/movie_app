@@ -25,9 +25,7 @@ class MovieModel {
       voteAverage: map['vote_average'] != null
           ? double.parse(map['vote_average'].toString())
           : null,
-      overview: map['overview'] != null
-          ? map['overview'] as String
-          : null, // Novo campo para a sinopse
+      overview: map['overview'] != null ? map['overview'] as String : null,
     );
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movie_app/src/controllers/movie_controller.dart';
-import 'package:movie_app/src/view/home/home_page.dart';
+import 'package:movie_app/src/view/home_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
