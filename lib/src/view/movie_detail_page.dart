@@ -24,7 +24,9 @@ class MovieDetailPage extends StatelessWidget {
               children: [
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(
+                      16.0,
+                    ),
                     child: Image.network(
                       'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                       fit: BoxFit.cover,
@@ -40,12 +42,16 @@ class MovieDetailPage extends StatelessWidget {
                       Text(
                         'Título: ${movie.title ?? ''}',
                         style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       Text(
                         'Data de Lançamento: ${movie.releaseDate ?? ''}',
-                        style: const TextStyle(fontSize: 16),
+                        style: const TextStyle(
+                          fontSize: 16,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       Row(
@@ -63,7 +69,8 @@ class MovieDetailPage extends StatelessWidget {
                               Text(
                                 '${(voteAverage * 10).toStringAsFixed(0)}%',
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ],
                           ),
@@ -78,12 +85,16 @@ class MovieDetailPage extends StatelessWidget {
                       const Text(
                         'Sinopse:',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 5),
                       Text(
                         movie.overview ?? 'Sinopse não disponível',
-                        style: const TextStyle(fontSize: 14),
+                        style: const TextStyle(
+                          fontSize: 14,
+                        ),
                       ),
                     ],
                   ),

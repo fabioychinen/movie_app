@@ -91,18 +91,22 @@ class CardMovieWidget extends StatelessWidget {
                     movie.title != null
                         ? _truncateString(movie.title!, 20)
                         : 'Loading...',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 5),
                   Text(
-                    DateFormat("dd MMM y", "pt_BR")
-                        .format(DateTime.parse(movie.releaseDate!)),
+                    DateFormat("dd MMM y", "pt_BR").format(
+                      DateTime.parse(movie.releaseDate!),
+                    ),
                     style: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w500),
+                      fontSize: 12,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ],

@@ -13,37 +13,53 @@ class HomePage extends StatelessWidget {
       builder: (context, movieController, _) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Filmes e Séries'),
+            title: const Text(
+              'Filmes e Séries',
+            ),
           ),
           body: SingleChildScrollView(
             child: Container(
-              margin: const EdgeInsets.only(left: 5, top: 50),
+              margin: const EdgeInsets.only(
+                left: 5,
+                top: 50,
+              ),
               child: SafeArea(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                      ),
                       child: const Text(
                         'Os Mais Populares',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     _buildMovieList(movieController.popularMovies,
                         movieController.isLoading),
                     Container(
-                      padding: const EdgeInsets.only(left: 10, bottom: 10),
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        bottom: 10,
+                      ),
                       child: const Text(
                         'Grátis Para Assistir',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                    _buildMovieList(movieController.freeToWatchMovies,
-                        movieController.isLoading),
+                    _buildMovieList(
+                      movieController.freeToWatchMovies,
+                      movieController.isLoading,
+                    ),
                   ],
                 ),
               ),
@@ -74,14 +90,18 @@ class HomePage extends StatelessWidget {
             final movie = movies[index];
             return GestureDetector(
               onTap: () {
-                Provider.of<MovieController>(context, listen: false)
-                    .showMovieDescription(movie, context);
+                Provider.of<MovieController>(
+                  context,
+                  listen: false,
+                ).showMovieDescription(movie, context);
               },
               child: CardMovieWidget(
                 movie: movie,
                 onTap: () {
-                  Provider.of<MovieController>(context, listen: false)
-                      .showMovieDescription(movie, context);
+                  Provider.of<MovieController>(
+                    context,
+                    listen: false,
+                  ).showMovieDescription(movie, context);
                 },
               ),
             );
