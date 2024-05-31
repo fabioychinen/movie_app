@@ -22,15 +22,13 @@ class MovieModel {
       releaseDate:
           map['release_date'] != null ? map['release_date'] as String : null,
       title: map['title'] != null ? map['title'] as String : null,
-      voteAverage: map['vote_average'] != null
-          ? double.parse(map['vote_average'].toString())
-          : null,
+      voteAverage: map['vote_average']?.toDouble(),
       overview: map['overview'] != null ? map['overview'] as String : null,
     );
   }
 
   factory MovieModel.fromJson(String source) =>
-      MovieModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      MovieModel.fromMap(json.decode(source));
 
   Map<String, dynamic> toMap() {
     return {
