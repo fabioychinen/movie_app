@@ -49,22 +49,22 @@ class CardMovieWidget extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        bottom: -20,
-                        left: 8,
+                        bottom: -10,
+                        left: 4,
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
                             Container(
-                              width: 40,
-                              height: 40,
+                              width: 25,
+                              height: 25,
                               decoration: BoxDecoration(
                                 color: Colors.black.withOpacity(0.6),
                                 shape: BoxShape.circle,
                               ),
                             ),
                             SizedBox(
-                              width: 40,
-                              height: 40,
+                              width: 25,
+                              height: 25,
                               child: CircularProgressIndicator(
                                 value: voteAverage / 10,
                                 backgroundColor: Colors.black12,
@@ -76,7 +76,7 @@ class CardMovieWidget extends StatelessWidget {
                             Text(
                               '${(voteAverage * 10).toStringAsFixed(0)}%',
                               style: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 8,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
