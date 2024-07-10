@@ -1,6 +1,6 @@
 # movie_app
 
-A new Flutter project.
+Um aplicativo que consome a API do the Movie Database, replicando as características do site
 
 ## Getting Started
 
